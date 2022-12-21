@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:orientation="vertical">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        tools:layout_editor_absoluteX="75dp"
+        tools:layout_editor_absoluteY="166dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <LinearLayout
+            android:layout_width="386dp"
+            android:layout_height="707dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_view_featured_movie_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                />
+
+            <ImageView
+                android:id="@+id/image_view_featured_movie"
+                android:layout_width="match_parent"
+                android:layout_height="178dp"
+                tools:src="@tools:sample/avatars"
+
+                />
+
+            <Button
+                android:id="@+id/button_featured_more_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/more_information" />
+
+            <Button
+                android:id="@+id/button_featured_tickets"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/screenings_and_tickets" />
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>
