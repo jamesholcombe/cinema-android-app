@@ -5,34 +5,34 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="16dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    >
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        tools:layout_editor_absoluteX="75dp"
-        tools:layout_editor_absoluteY="166dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true"
+        app:contentPadding="4dp"
         >
 
         <LinearLayout
-            android:layout_width="386dp"
-            android:layout_height="707dp"
-            android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="529dp"
+            android:orientation="vertical"
+            >
 
             <TextView
                 android:id="@+id/text_view_featured_movie_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView"
                 android:gravity="center"
+                android:text="TextView"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/image_view_featured_movie"

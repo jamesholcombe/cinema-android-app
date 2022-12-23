@@ -13,4 +13,6 @@
     <string name="maps_and_directions">Maps and Directions</string>
     <string name="more_information">More Information</string>
     <string name="screenings_and_tickets">Screenings and Tickets</string>
+    <string name="welcome">Welcome </string>
+    <string name="not_logged_in">Not Logged In</string>
 </resources>

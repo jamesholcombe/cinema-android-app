@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Map;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import android.graphics.Bitmap;
@@ -16,25 +17,38 @@ import android.net.Uri;
 
 public class Movie {
     private String title;
-    private String description;
+    private String descriptionShort;
     private String imageUri;
+    private String descriptionLong;
 
-    public Movie(String title, String description, String imageUri) {
+    public Movie(String title, String description, String imageUri, String descriptionLong) {
         this.title = title;
-        this.description = description;
+        this.descriptionShort = description;
         this.imageUri = imageUri;
+        this.descriptionLong = descriptionLong;
+    }
+
+    public Movie (Map movieMap) {
+        this.title = (String) movieMap.get("title");
+        this.descriptionShort = (String) movieMap.get("descriptionShort");
+        this.imageUri = (String) movieMap.get("imageUri");
+        this.descriptionLong = (String) movieMap.get("descriptionLong");
     }
 
     public String getTitle() {
         return title;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDescriptionShort() {
+        return descriptionShort;
     }
 
     public String getImageUri() {
         return imageUri;
+    }
+
+    public String getDescriptionLong() {
+        return descriptionLong;
     }
 
 

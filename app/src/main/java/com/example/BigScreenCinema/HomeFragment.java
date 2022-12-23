@@ -1,16 +1,17 @@
 package com.example.BigScreenCinema;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.BigScreenCinema.Models.MovieModel;
 import com.example.BigScreenCinema.databinding.FragmentHomeBinding;
 
 import java.util.ArrayList;
@@ -18,7 +19,15 @@ import java.util.ArrayList;
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
-    private ArrayList<Movie> movies = new ArrayList<>();
+    private static ArrayList<Movie> movies;
+    private MovieModel movieModel;
+
+
+
+
+    public static void setMovies(ArrayList<Movie> movies) {
+        movies = movies;
+    }
 
     @Override
     public View onCreateView(
@@ -27,6 +36,7 @@ public class HomeFragment extends Fragment {
     ) {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
+        movieModel = new ViewModelProvider(this).get(MovieModel.class);
         return binding.getRoot();
 
     }
@@ -35,11 +45,11 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        String uri = "https://cdn.pixabay.com/photo/2017/06/02/22/01/dog-2367414_960_720.png";
+        System.out.println("getting movies");
 
-        movies.add(new Movie("The Shawshank Redemption", "asdfasdf", uri));
-        movies.add(new Movie("The Godfather", "asdfasdf", uri));
-        movies.add(new Movie("The Godfather: Part II", "asdfasdf", uri));
+        movies = movieModel.getItems();
+        System.out.println("got movies");
+        System.out.println(movies);
 
         RecyclerView recyclerView = binding.recyclerViewFeaturedMovies;
         recyclerView.setAdapter(new FeaturedMovieAdapter(movies));

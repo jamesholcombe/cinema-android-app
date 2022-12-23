@@ -11,12 +11,42 @@
         android:layout_height="wrap_content"
         android:theme="@style/Theme.BigScreenCinema.AppBarOverlay">
 
+
+
+
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:popupTheme="@style/Theme.BigScreenCinema.PopupOverlay" />
+            app:popupTheme="@style/Theme.BigScreenCinema.PopupOverlay">
+
+            <TextView
+                android:id="@+id/textViewUser"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/not_logged_in"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+
+                >
+            </TextView>
+
+            <ImageButton
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/user"
+                android:layout_gravity="right"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:onClick="openLoginActivity"
+
+                />
+            </androidx.appcompat.widget.Toolbar>
+
 
     </com.google.android.material.appbar.AppBarLayout>
 
