@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.BigScreenCinema.Models.Movie;
+import com.example.BigScreenCinema.ViewModels.Movie;
 
 import java.util.ArrayList;
 

@@ -11,8 +11,8 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.BigScreenCinema.Models.Movie;
-import com.example.BigScreenCinema.Models.MovieModel;
+import com.example.BigScreenCinema.ViewModels.Movie;
+import com.example.BigScreenCinema.ViewModels.MovieView;
 import com.example.BigScreenCinema.databinding.FragmentHomeBinding;
 
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
     private static ArrayList<Movie> movies;
-    private MovieModel movieModel;
+    private MovieView movieModel;
 
     @Override
     public View onCreateView(
@@ -30,7 +30,7 @@ public class HomeFragment extends Fragment {
     ) {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
-        movieModel = new ViewModelProvider(this).get(MovieModel.class);
+        movieModel = new ViewModelProvider(this).get(MovieView.class);
         return binding.getRoot();
 
     }

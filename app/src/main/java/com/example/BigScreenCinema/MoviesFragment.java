@@ -8,13 +8,11 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.BigScreenCinema.Models.Movie;
-import com.example.BigScreenCinema.Models.MovieModel;
-import com.example.BigScreenCinema.databinding.FragmentHomeBinding;
+import com.example.BigScreenCinema.ViewModels.Movie;
+import com.example.BigScreenCinema.ViewModels.MovieView;
 import com.example.BigScreenCinema.databinding.FragmentMoviesBinding;
 
 import java.util.ArrayList;
@@ -22,7 +20,7 @@ import java.util.ArrayList;
 public class MoviesFragment extends Fragment {
 
     private FragmentMoviesBinding binding;
-    private MovieModel movieModel;
+    private MovieView movieModel;
     private ArrayList<Movie> movies;
 
     @Override
@@ -32,7 +30,7 @@ public class MoviesFragment extends Fragment {
     ) {
 
         binding = FragmentMoviesBinding.inflate(inflater, container, false);
-        movieModel = new ViewModelProvider(this).get(MovieModel.class);
+        movieModel = new ViewModelProvider(this).get(MovieView.class);
         return binding.getRoot();
 
     }

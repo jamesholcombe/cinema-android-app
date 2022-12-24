@@ -20,8 +20,8 @@
         >
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="529dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             >
 
@@ -36,23 +36,25 @@
 
             <ImageView
                 android:id="@+id/image_view_featured_movie"
-                android:layout_width="match_parent"
-                android:layout_height="178dp"
                 tools:src="@tools:sample/avatars"
+                android:layout_height="300dp"
+                android:layout_width="200dp"
+                android:layout_gravity="center"
 
                 />
-
-            <Button
-                android:id="@+id/button_featured_more_info"
-                android:layout_width="match_parent"
+            <RatingBar
+                android:id="@+id/ratingBar"
+                style="?android:attr/ratingBarStyle"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/more_information" />
+                android:scaleX="1"
+                android:scaleY="1"
+                android:max="5"
+                android:layout_gravity="center"
+                android:rating="3"
+                />
 
-            <Button
-                android:id="@+id/button_featured_tickets"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/screenings_and_tickets" />
+
 
 
         </LinearLayout>

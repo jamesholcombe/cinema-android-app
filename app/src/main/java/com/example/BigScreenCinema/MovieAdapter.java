@@ -4,12 +4,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.BigScreenCinema.Models.Movie;
+import com.example.BigScreenCinema.ViewModels.Movie;
 
 import java.util.ArrayList;
 
@@ -20,6 +21,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     public class ViewHolder extends RecyclerView.ViewHolder{
         public ImageView movieImageView;
         public TextView movieTitleTextView;
+        public RatingBar movieRatingBar;
 
 
         // Constructor - accepts entire row item
@@ -29,6 +31,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             // Find each view by id you set up in the list_item.xml
             movieImageView = itemView.findViewById(R.id.image_view_movie);
             movieTitleTextView = itemView.findViewById(R.id.text_view_movie_title);
+            movieRatingBar = itemView.findViewById(R.id.ratingBar);
 
         }
     }
@@ -65,6 +68,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
         TextView textView = holder.movieTitleTextView;
         textView.setText(currentItem.getTitle());
+
+        RatingBar ratingBar = holder.movieRatingBar;
+        ratingBar.setRating(currentItem.getRating() / 2);
 
     }
 

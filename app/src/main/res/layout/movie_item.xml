@@ -17,7 +17,7 @@
         app:cardCornerRadius="8dp"
         app:cardElevation="4dp"
         app:cardUseCompatPadding="true"
-        app:contentPadding="4dp">
+        app:contentPadding="12dp">
 
 
 
@@ -30,8 +30,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:text="LABEL"
                 android:id="@+id/text_view_movie_title"
+                android:layout_gravity="center"
+                android:textAlignment="center"
                 />
 
         <LinearLayout
@@ -47,25 +48,39 @@
                 tools:src="@tools:sample/avatars" />
 
             <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
+                android:layout_gravity="center"
+                android:gravity="center"
 
                 >
-            <Button
-                android:id="@+id/button_movie_more_info"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/more_information" />
 
-            <Button
-                android:id="@+id/button_movie_tickets"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/screenings_and_tickets" />
+                <Button
+                    android:id="@+id/button_movie_more_info"
+                    style="@style/ButtonSmall"
+
+                    android:text="@string/more_information" />
+
+                <Button
+                    android:id="@+id/button_movie_tickets"
+                    android:text="@string/screenings_and_tickets"
+                    style="@style/ButtonSmall"
+                    />
+
+                <RatingBar
+                    android:id="@+id/ratingBar"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleX="1"
+                    android:scaleY="1"
+                    android:max="5"
+                    android:layout_gravity="center"
+                    android:rating="3"
+                    />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
-
 
 
         </LinearLayout>

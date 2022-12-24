@@ -15,4 +15,5 @@
     <string name="screenings_and_tickets">Screenings and Tickets</string>
     <string name="welcome">Welcome </string>
     <string name="not_logged_in">Not Logged In</string>
+    <string name="explore_featured_movies">Explore Featured Movies</string>
 </resources>
