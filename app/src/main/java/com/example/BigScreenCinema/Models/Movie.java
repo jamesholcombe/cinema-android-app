@@ -1,4 +1,4 @@
-package com.example.BigScreenCinema;
+package com.example.BigScreenCinema.Models;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

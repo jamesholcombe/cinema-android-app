@@ -7,14 +7,23 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.BigScreenCinema.Models.Movie;
+import com.example.BigScreenCinema.Models.MovieModel;
 import com.example.BigScreenCinema.databinding.FragmentHomeBinding;
 import com.example.BigScreenCinema.databinding.FragmentMoviesBinding;
+
+import java.util.ArrayList;
 
 public class MoviesFragment extends Fragment {
 
     private FragmentMoviesBinding binding;
+    private MovieModel movieModel;
+    private ArrayList<Movie> movies;
 
     @Override
     public View onCreateView(
@@ -23,6 +32,7 @@ public class MoviesFragment extends Fragment {
     ) {
 
         binding = FragmentMoviesBinding.inflate(inflater, container, false);
+        movieModel = new ViewModelProvider(this).get(MovieModel.class);
         return binding.getRoot();
 
     }
@@ -30,13 +40,17 @@ public class MoviesFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(MoviesFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
-            }
-        });
+        RecyclerView recyclerView = binding.recyclerViewMovies;
+        movies = movieModel.getItems();
+        System.out.println("got movies");
+        System.out.println(movies);
+        System.out.println(recyclerView);
+
+        recyclerView.setAdapter(new MovieAdapter(movies));
+        System.out.println("set adaptor");
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+
     }
 
     @Override

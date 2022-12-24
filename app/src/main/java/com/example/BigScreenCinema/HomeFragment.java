@@ -11,6 +11,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.BigScreenCinema.Models.Movie;
 import com.example.BigScreenCinema.Models.MovieModel;
 import com.example.BigScreenCinema.databinding.FragmentHomeBinding;
 
@@ -21,13 +22,6 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
     private static ArrayList<Movie> movies;
     private MovieModel movieModel;
-
-
-
-
-    public static void setMovies(ArrayList<Movie> movies) {
-        movies = movies;
-    }
 
     @Override
     public View onCreateView(
