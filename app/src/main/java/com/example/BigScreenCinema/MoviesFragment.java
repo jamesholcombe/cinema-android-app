@@ -27,10 +27,7 @@ public class MoviesFragment extends Fragment {
     private SelectedMovieView selectedMovieView;
 
     @Override
-    public View onCreateView(
-            LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState
-    ) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentMoviesBinding.inflate(inflater, container, false);
         movieModel = new ViewModelProvider(this).get(MovieView.class);
@@ -49,7 +46,7 @@ public class MoviesFragment extends Fragment {
         System.out.println(movies);
         System.out.println(recyclerView);
 
-        recyclerView.setAdapter(new MovieAdapter(movies,NavHostFragment.findNavController(MoviesFragment.this ), selectedMovieView));
+        recyclerView.setAdapter(new MovieAdapter(movies, NavHostFragment.findNavController(MoviesFragment.this), selectedMovieView));
         System.out.println("set adaptor");
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));

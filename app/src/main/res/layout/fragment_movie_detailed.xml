@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:layout_margin="20dp"
     android:orientation="vertical"
-    >
+    android:padding="12dp">
 
 
     <TextView
@@ -14,27 +13,59 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:textAlignment="center"
         android:gravity="center"
-        >
+        android:text="LABEL"
+        android:textAlignment="center"
+        android:textSize="30sp">
 
     </TextView>
+
     <ImageView
         android:id="@+id/image_view_movie_detailed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/fui_idp_button_background_google">
-    </ImageView>
+        android:layout_width="200sp"
+        android:layout_height="400sp"
+        android:layout_gravity="center"
+        android:src="@mipmap/ic_launcher"
+
+        ></ImageView>
+
     <RatingBar
         android:id="@+id/rating_bar_detailed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scaleX="1"
-        android:scaleY="1"
-        android:max="5"
         android:layout_gravity="center"
+        android:clickable="false"
+        android:max="5"
         android:rating="3"
-        />
+        android:scaleX="1"
+        android:scaleY="1" />
+
+    <Button
+        android:id="@+id/button_detailed_to_screenings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/screenings_and_tickets">
+
+    </Button>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+        </LinearLayout>
+
+    </ScrollView>
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

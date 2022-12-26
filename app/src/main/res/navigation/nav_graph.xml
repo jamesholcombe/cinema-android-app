@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_HomeFragment_to_MoviesFragment"
             app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_screeningsFragment"
+            app:destination="@id/screeningsFragment" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -22,14 +25,22 @@
         tools:layout="@layout/fragment_movies">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
-        <action
             android:id="@+id/action_SecondFragment_to_detaliedFragment"
             app:destination="@id/detaliedFragment" />
+        <action
+            android:id="@+id/action_SecondFragment_to_screeningsFragment"
+            app:destination="@id/screeningsFragment" />
     </fragment>
     <fragment
         android:id="@+id/detaliedFragment"
         android:name="com.example.BigScreenCinema.DetaliedFragment"
-        android:label="DetaliedFragment" />
+        android:label="DetaliedFragment" >
+        <action
+            android:id="@+id/action_detaliedFragment_to_screeningsFragment"
+            app:destination="@id/screeningsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/screeningsFragment"
+        android:name="com.example.BigScreenCinema.ScreeningsFragment"
+        android:label="ScreeningsFragment" />
 </navigation>

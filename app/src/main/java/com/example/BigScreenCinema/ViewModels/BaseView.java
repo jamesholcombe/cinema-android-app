@@ -14,9 +14,6 @@ import java.util.ArrayList;
 import java.util.Map;
 
 
-
-
-
 class BaseView<T extends Base> extends ViewModel {
 
     private final Class<? extends T> klass;
@@ -42,19 +39,9 @@ class BaseView<T extends Base> extends ViewModel {
         return items;
     }
 
-    public T getItem(String itemId) throws Exception {
-        if (!isLoaded) {
-            loadItems();
-        }
-        for (T item : items) {
-            if (item.getId() == itemId) {
-                return item;
-            }
-        }
-        throw new Exception("Item not found");
-
-    };
-
+    public FirebaseFirestore getDb() {
+        return db;
+    }
 
     private void loadItems() {
         db.collection(collectionName)
@@ -67,8 +54,7 @@ class BaseView<T extends Base> extends ViewModel {
                             String json = gson.toJson(data);
                             T object = gson.fromJson(json, klass);
                             items.add(object);
-                            System.out.println("added item");
-                            System.out.println(object);
+
                         }
                         isLoaded = true;
                     } else {

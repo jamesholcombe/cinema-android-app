@@ -7,11 +7,11 @@ import androidx.lifecycle.ViewModel;
 public class SelectedMovieView extends ViewModel {
     private MutableLiveData<Movie> selectedMovie = new MutableLiveData<Movie>();
 
-    public void selectMovie (Movie movie) {
+    public void selectMovie(Movie movie) {
         selectedMovie.setValue(movie);
     }
 
-    public LiveData<Movie> getSelectedMovie () {
+    public LiveData<Movie> getSelectedMovie() {
         return selectedMovie;
     }
 }

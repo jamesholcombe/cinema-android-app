@@ -7,15 +7,17 @@ public class Movie extends Base {
     private String descriptionLong;
     private Float rating;
 
-    public Movie(String id ,String title, String description, String imageUri, String descriptionLong, Float rating) {
+
+    public Movie(String id, String title, String description, String imageUri, String descriptionLong, Float rating) {
         super(id);
         this.title = title;
         this.descriptionShort = description;
         this.imageUri = imageUri;
         this.descriptionLong = descriptionLong;
         this.rating = rating;
-    }
 
+
+    }
 
 
     public String getTitle() {
@@ -33,6 +35,7 @@ public class Movie extends Base {
     public String getImageUri() {
         return imageUri;
     }
+
 
     public String getDescriptionLong() {
         return descriptionLong;

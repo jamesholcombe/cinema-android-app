@@ -16,4 +16,13 @@
     <string name="welcome">Welcome </string>
     <string name="not_logged_in">Not Logged In</string>
     <string name="explore_featured_movies">Explore Featured Movies</string>
+    <string name="select_screening">Select Screening</string>
+    <string name="select_number_of_adult_tickets_14">Select Number of Adult Tickets (14+)</string>
+    <string name="select_number_of_child_tickets">Select Number of Child Tickets</string>
+    <string name="prices">Prices</string>
+    <string name="child">Child:</string>
+    <string name="adult_14">Adult (14+)</string>
+    <string name="select_number_of_adult_tickets">Select Number of Adult Tickets</string>
+    <string name="total">Total:</string>
+    <string name="confirm">Confirm</string>
 </resources>

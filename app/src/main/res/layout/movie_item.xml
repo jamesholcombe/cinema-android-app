@@ -73,12 +73,11 @@
                     style="?android:attr/ratingBarStyleSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:scaleX="1"
-                    android:scaleY="1"
-                    android:max="5"
                     android:layout_gravity="center"
+                    android:max="5"
                     android:rating="3"
-                    />
+                    android:scaleX="1"
+                    android:scaleY="1" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 

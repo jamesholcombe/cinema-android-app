@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,7 +29,7 @@ public class DetaliedFragment extends Fragment {
 
     @Override
     public View onCreateView(
-            LayoutInflater inflater, ViewGroup container,
+            @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
 
@@ -43,6 +45,17 @@ public class DetaliedFragment extends Fragment {
 
         Movie movie = selectedMovieModel.getSelectedMovie().getValue();
         binding.textViewDetailed.setText(movie.getTitle());
+        binding.ratingBarDetailed.setRating(movie.getRating());
+        binding.textDescription.setText(movie.getDescriptionLong());
+
+        binding.buttonDetailedToScreenings.setOnClickListener(v -> {
+
+            NavHostFragment.findNavController(DetaliedFragment.this).navigate(R.id.action_detaliedFragment_to_screeningsFragment);
+        });
+
+
+        DownloadImageFromUri downloadImageFromUri = new DownloadImageFromUri(binding.imageViewMovieDetailed);
+        downloadImageFromUri.execute(movie.getImageUri());
 
 
     }
