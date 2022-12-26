@@ -46,7 +46,7 @@ public class HomeFragment extends Fragment {
         System.out.println(movies);
 
         RecyclerView recyclerView = binding.recyclerViewFeaturedMovies;
-        recyclerView.setAdapter(new FeaturedMovieAdapter(movies));
+        recyclerView.setAdapter(new FeaturedMovieAdapter(movies,NavHostFragment.findNavController(HomeFragment.this)));
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
 
 

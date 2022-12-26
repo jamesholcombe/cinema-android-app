@@ -24,5 +24,12 @@
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_SecondFragment_to_detaliedFragment"
+            app:destination="@id/detaliedFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/detaliedFragment"
+        android:name="com.example.BigScreenCinema.DetaliedFragment"
+        android:label="DetaliedFragment" />
 </navigation>

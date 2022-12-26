@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.NavController;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.BigScreenCinema.ViewModels.Movie;
@@ -34,7 +35,7 @@ public class FeaturedMovieAdapter extends RecyclerView.Adapter<FeaturedMovieAdap
     }
 
     // Constructor
-    public FeaturedMovieAdapter(ArrayList<Movie> list){
+    public FeaturedMovieAdapter(ArrayList<Movie> list, NavController navController){
         this.list = list;
     }
 

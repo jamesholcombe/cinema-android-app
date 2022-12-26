@@ -13,15 +13,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.BigScreenCinema.ViewModels.Movie;
 import com.example.BigScreenCinema.ViewModels.MovieView;
-import com.example.BigScreenCinema.databinding.FragmentMoviesBinding;
+import com.example.BigScreenCinema.ViewModels.SelectedMovieView;
+import com.example.BigScreenCinema.databinding.FragmentMovieDetailedBinding;
 
 import java.util.ArrayList;
 
 public class DetaliedFragment extends Fragment {
 
-    private FragmentMoviesBinding binding;
+    private FragmentMovieDetailedBinding binding;
     private MovieView movieModel;
     private ArrayList<Movie> movies;
+    private SelectedMovieView selectedMovieModel;
 
     @Override
     public View onCreateView(
@@ -29,8 +31,9 @@ public class DetaliedFragment extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = FragmentMoviesBinding.inflate(inflater, container, false);
+        binding = FragmentMovieDetailedBinding.inflate(inflater, container, false);
         movieModel = new ViewModelProvider(this).get(MovieView.class);
+        selectedMovieModel = new ViewModelProvider(requireActivity()).get(SelectedMovieView.class);
         return binding.getRoot();
 
     }
@@ -38,16 +41,9 @@ public class DetaliedFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        RecyclerView recyclerView = binding.recyclerViewMovies;
-        movies = movieModel.getItems();
-        System.out.println("got movies");
-        System.out.println(movies);
-        System.out.println(recyclerView);
+        Movie movie = selectedMovieModel.getSelectedMovie().getValue();
+        binding.textViewDetailed.setText(movie.getTitle());
 
-        recyclerView.setAdapter(new MovieAdapter(movies));
-        System.out.println("set adaptor");
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
 
     }
 

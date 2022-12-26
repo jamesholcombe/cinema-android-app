@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.BigScreenCinema.ViewModels.MovieView;
+import com.example.BigScreenCinema.ViewModels.SelectedMovieView;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private static String userDisplayName;
     private TextView userDisplayNameTextView;
     private MovieView movieModel;
+    private SelectedMovieView selectedMovieView;
 
 
     public FirebaseUser getUser() {
@@ -59,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void createViewModels () {
         movieModel = new ViewModelProvider(this).get(MovieView.class);
+        selectedMovieView = new ViewModelProvider(this).get(SelectedMovieView.class);
 
     }
 
