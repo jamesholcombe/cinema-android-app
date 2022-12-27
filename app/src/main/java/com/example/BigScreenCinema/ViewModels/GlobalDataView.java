@@ -10,20 +10,16 @@ public class GlobalDataView extends ViewModel {
     private MutableLiveData<FirebaseUser> firebaseUser = new MutableLiveData<>();
 
 
-    public User getUser() {
-        return user.getValue();
+    public MutableLiveData<User> getUser() {
+        return user;
     }
 
     public void setUser(User user) {
         this.user.setValue(user);
     }
 
-    private void createOrRetrieveUser() {
-
-    }
-
-    public FirebaseUser getFirebaseUser() {
-        return firebaseUser.getValue();
+    public MutableLiveData<FirebaseUser> getFirebaseUser() {
+        return firebaseUser;
     }
 
     public void setFirebaseUser(FirebaseUser firebaseUser) {

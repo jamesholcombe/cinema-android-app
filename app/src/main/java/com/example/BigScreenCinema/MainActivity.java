@@ -18,6 +18,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.BigScreenCinema.ViewModels.Booking;
 import com.example.BigScreenCinema.ViewModels.GlobalDataView;
+import com.example.BigScreenCinema.ViewModels.LiveBookingView;
 import com.example.BigScreenCinema.ViewModels.MovieView;
 import com.example.BigScreenCinema.ViewModels.SelectedMovieView;
 import com.example.BigScreenCinema.ViewModels.User;
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private SelectedMovieView selectedMovieView;
     private UserView userView;
     private GlobalDataView globalDataView;
+    private LiveBookingView liveBookingView;
     private final ActivityResultLauncher<Intent> signInLauncher = registerForActivityResult(new FirebaseAuthUIActivityResultContract(), new ActivityResultCallback<FirebaseAuthUIAuthenticationResult>() {
         @Override
         public void onActivityResult(FirebaseAuthUIAuthenticationResult result) {
@@ -55,10 +57,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void setUserText() {
 
-        if (globalDataView.getFirebaseUser() != null) {
+        if (globalDataView.getFirebaseUser().getValue() != null) {
 
             userDisplayNameTextView = findViewById(R.id.textViewUser);
-            String message = getString(R.string.welcome) + " " + globalDataView.getFirebaseUser().getDisplayName();
+            String message = getString(R.string.welcome) + " " + globalDataView.getFirebaseUser().getValue().getDisplayName();
             userDisplayNameTextView.setText(message);
         }
     }
@@ -68,17 +70,9 @@ public class MainActivity extends AppCompatActivity {
         selectedMovieView = new ViewModelProvider(this).get(SelectedMovieView.class);
         globalDataView = new ViewModelProvider(this).get(GlobalDataView.class);
         userView = new ViewModelProvider(this).get(UserView.class);
+        liveBookingView = new ViewModelProvider(this).get(LiveBookingView.class);
 
     }
-
-//    @Override
-//    public void onResume() {
-//        super.onResume();
-//        //print user
-//        System.out.println("User: " + getUser().getDisplayName());
-//
-//
-//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        System.out.println("onCreate");
         setUserText();
 
         setSupportActionBar(binding.toolbar);

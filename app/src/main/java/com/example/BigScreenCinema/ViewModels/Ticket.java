@@ -1,10 +1,7 @@
 package com.example.BigScreenCinema.ViewModels;
 
 
-enum TicketType {
-    Adult,
-    Child
-}
+import com.example.BigScreenCinema.ViewModels.Tickets.TicketType;
 
 public class Ticket extends Base {
 

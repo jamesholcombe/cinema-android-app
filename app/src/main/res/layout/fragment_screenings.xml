@@ -68,7 +68,7 @@
         <Spinner
             android:id="@+id/select_screening"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"></Spinner>
+            android:layout_height="wrap_content" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -85,7 +85,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="number"
+            android:imeActionId="@integer/material_motion_duration_long_2"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -103,7 +104,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="number"
+            android:imeActionId="@integer/material_motion_duration_long_2"
+             />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -121,10 +124,17 @@
             android:id="@+id/text_total"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="£0.00" />
+            android:text="@string/_0_00" />
 
 
     </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/screening_confirm"
+        android:layout_gravity="center"
+        android:text="@string/confirm" />
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>
