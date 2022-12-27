@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.BigScreenCinema.ViewModels.LiveBookingView;
 import com.example.BigScreenCinema.ViewModels.SelectedMovieView;
@@ -36,7 +37,7 @@ public class ScreeningsFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.textTitleScreenings.setText(selectedMovieView.getSelectedMovie().getValue().getTitle());
+        binding.textTitleScreenings.setText(selectedMovieView.getMovie().getValue().getTitle());
 
 
         liveBookingView.getTotalFormatted().observe(getViewLifecycleOwner(), new Observer<String>() {
@@ -66,6 +67,13 @@ public class ScreeningsFragment extends Fragment {
                 return true;
             }
         });
+
+        binding.screeningConfirm.setOnClickListener(
+                v -> {
+                    NavHostFragment.findNavController(this).navigate(R.id.action_screeningsFragment_to_checkoutFragment);
+                }
+
+        );
     }
 
 

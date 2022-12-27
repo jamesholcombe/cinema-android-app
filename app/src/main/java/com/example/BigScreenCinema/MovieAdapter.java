@@ -85,13 +85,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
         holder.movieScreeningsButton.setOnClickListener(view -> {
 
-            selectedMovieView.selectMovie(currentItem);
+            selectedMovieView.setMovie(currentItem);
             navController.navigate(R.id.action_SecondFragment_to_screeningsFragment);
         });
 
         holder.movieMoreInfo.setOnClickListener(view -> {
 
-            selectedMovieView.selectMovie(currentItem);
+            selectedMovieView.setMovie(currentItem);
                     navController.navigate(R.id.action_SecondFragment_to_detaliedFragment);
         });
     }

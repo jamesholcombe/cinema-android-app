@@ -32,7 +32,6 @@ public class MoviesFragment extends Fragment {
         binding = FragmentMoviesBinding.inflate(inflater, container, false);
         movieModel = new ViewModelProvider(this).get(MovieView.class);
         selectedMovieView = new ViewModelProvider(requireActivity()).get(SelectedMovieView.class);
-        System.out.println(selectedMovieView.getSelectedMovie());
         return binding.getRoot();
 
     }
@@ -41,7 +40,7 @@ public class MoviesFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         RecyclerView recyclerView = binding.recyclerViewMovies;
-        movies = movieModel.getItems();
+        movies = movieModel.getItems().getValue();
         System.out.println("got movies");
         System.out.println(movies);
         System.out.println(recyclerView);

@@ -43,10 +43,12 @@ public class DetaliedFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Movie movie = selectedMovieModel.getSelectedMovie().getValue();
+        Movie movie = selectedMovieModel.getMovie().getValue();
         binding.textViewDetailed.setText(movie.getTitle());
         binding.ratingBarDetailed.setRating(movie.getRating());
         binding.textDescription.setText(movie.getDescriptionLong());
+        System.out.println("Screenings");
+        System.out.println(movie.getScreenings());
 
         binding.buttonDetailedToScreenings.setOnClickListener(v -> {
 

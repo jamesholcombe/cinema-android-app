@@ -42,5 +42,13 @@
     <fragment
         android:id="@+id/screeningsFragment"
         android:name="com.example.BigScreenCinema.ScreeningsFragment"
-        android:label="ScreeningsFragment" />
+        android:label="ScreeningsFragment" >
+        <action
+            android:id="@+id/action_screeningsFragment_to_checkoutFragment"
+            app:destination="@id/checkoutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/checkoutFragment"
+        android:name="com.example.BigScreenCinema.CheckoutFragment"
+        android:label="CheckoutFragment" />
 </navigation>

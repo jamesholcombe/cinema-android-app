@@ -1,17 +1,29 @@
 package com.example.BigScreenCinema.ViewModels;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
-public class SelectedMovieView extends ViewModel {
-    private MutableLiveData<Movie> selectedMovie = new MutableLiveData<Movie>();
+import com.google.firebase.firestore.CollectionReference;
 
-    public void selectMovie(Movie movie) {
-        selectedMovie.setValue(movie);
+import java.util.Objects;
+
+public class SelectedMovieView extends BaseView<Screening> {
+
+    MutableLiveData<Movie> movie = new MutableLiveData<>();
+
+    public SelectedMovieView() {
+        super("movies", Screening.class);
     }
 
-    public LiveData<Movie> getSelectedMovie() {
-        return selectedMovie;
+    public MutableLiveData<Movie> getMovie() {
+        return movie;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie.setValue(movie);
+        loadItems();
+    }
+
+    private CollectionReference getReference() {
+        return db.collection(collectionName).document(Objects.requireNonNull(movie.getValue()).getTitle()).collection("screenings");
     }
 }

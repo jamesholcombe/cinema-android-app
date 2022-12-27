@@ -41,7 +41,7 @@ public class HomeFragment extends Fragment {
 
         System.out.println("getting movies");
 
-        movies = movieModel.getItems();
+        movies = movieModel.getItems().getValue();
         System.out.println("got movies");
         System.out.println(movies);
 

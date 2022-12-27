@@ -8,8 +8,6 @@ import com.example.BigScreenCinema.ViewModels.Tickets.AdultTicket;
 import com.example.BigScreenCinema.ViewModels.Tickets.ChildTicket;
 import com.example.BigScreenCinema.ViewModels.Tickets.TicketType;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-
 public class LiveBookingView extends ViewModel {
 
     private final  MutableLiveData<Integer> numChildTickets = new MutableLiveData<Integer>(0);
@@ -27,6 +25,14 @@ public class LiveBookingView extends ViewModel {
         setTotal(newNumAdultTickets, this.numChildTickets.getValue());
     }
 
+    public MutableLiveData<Integer> getNumAdultTickets() {
+        return numAdultTickets;
+    }
+
+    public MutableLiveData<Integer> getNumChildTickets() {
+        return numChildTickets;
+    }
+
     public void setNumChildTickets(Integer newNumChildTickets) {
 
         numChildTickets.setValue(newNumChildTickets);
@@ -35,9 +41,8 @@ public class LiveBookingView extends ViewModel {
 
     private void setTotal(Integer adultTickets, Integer childTickets) {
 
-        Integer newTotal =  (adultTickets * AdultTicket.getPrice() ) + ( childTickets * ChildTicket.getPrice());
+        int newTotal =  (adultTickets * AdultTicket.getPrice() ) + ( childTickets * ChildTicket.getPrice());
         total.setValue(newTotal);
-        System.out.println("set toal ran" + TicketType.getFormattedPrice(newTotal));
         totalFormatted.setValue(TicketType.getFormattedPrice(newTotal));
 
     }
