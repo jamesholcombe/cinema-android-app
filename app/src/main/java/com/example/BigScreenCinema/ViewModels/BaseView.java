@@ -7,15 +7,12 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.BigScreenCinema.R;
+import com.example.BigScreenCinema.ViewModels.DataModels.Base;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.Objects;
 
 
 class BaseView<T extends Base> extends ViewModel {
@@ -33,7 +30,7 @@ class BaseView<T extends Base> extends ViewModel {
     protected final String collectionName;
     private final MutableLiveData<ArrayList<T>> items = new MutableLiveData<>(new ArrayList<T>());
     private boolean isLoaded = false;
-    private final Gson gson = new Gson();
+
 
     public MutableLiveData<ArrayList<T>> getItems() {
         if (!isLoaded) {
@@ -46,7 +43,7 @@ class BaseView<T extends Base> extends ViewModel {
         return db;
     }
 
-    private CollectionReference getReference() {
+    protected CollectionReference getReference() {
         return db.collection(collectionName);
     }
 
@@ -57,10 +54,8 @@ class BaseView<T extends Base> extends ViewModel {
                     if (task.isSuccessful()) {
                         ArrayList<T> newItems = new ArrayList<T>();
                         for (QueryDocumentSnapshot document : task.getResult()) {
-
-                            Map<String, Object> data = document.getData();
-                            String json = gson.toJson(data);
-                            T object = gson.fromJson(json, klass);
+                            T object = document.toObject(klass);
+                            object.setId(document.getId());
                             newItems.add(object);
 
                         }

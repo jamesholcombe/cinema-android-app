@@ -1,4 +1,4 @@
-package com.example.BigScreenCinema.ViewModels;
+package com.example.BigScreenCinema.ViewModels.DataModels;
 
 public class User extends Base {
 

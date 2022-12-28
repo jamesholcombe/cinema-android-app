@@ -12,7 +12,8 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.BigScreenCinema.ViewModels.LiveBookingView;
-import com.example.BigScreenCinema.ViewModels.Movie;
+import com.example.BigScreenCinema.ViewModels.DataModels.Movie;
+import com.example.BigScreenCinema.ViewModels.DataModels.Screening;
 import com.example.BigScreenCinema.ViewModels.SelectedMovieView;
 import com.example.BigScreenCinema.databinding.FragmentCheckoutBinding;
 
@@ -61,6 +62,14 @@ public class CheckoutFragment extends Fragment {
                 binding.textViewMovieTitle.setText(movie.getTitle());
             }
         });
+        liveBookingView.getScreening().observe(getViewLifecycleOwner(), new Observer<Screening>() {
+            @Override
+            public void onChanged(Screening screening) {
+                binding.textDate.setText(screening.getDateString());
+            }
+        });
+
+
 
 
     }

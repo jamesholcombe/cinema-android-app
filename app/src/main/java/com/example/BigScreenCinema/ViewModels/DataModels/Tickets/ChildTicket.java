@@ -1,4 +1,4 @@
-package com.example.BigScreenCinema.ViewModels.Tickets;
+package com.example.BigScreenCinema.ViewModels.DataModels.Tickets;
 
 public class ChildTicket extends TicketType{
     private static final int price = 500;

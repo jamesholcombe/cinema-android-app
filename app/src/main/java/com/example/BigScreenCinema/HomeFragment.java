@@ -7,11 +7,12 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.BigScreenCinema.ViewModels.Movie;
+import com.example.BigScreenCinema.ViewModels.DataModels.Movie;
 import com.example.BigScreenCinema.ViewModels.MovieView;
 import com.example.BigScreenCinema.databinding.FragmentHomeBinding;
 
@@ -39,15 +40,14 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        System.out.println("getting movies");
+        movieModel.getItems().observe(getViewLifecycleOwner(), movies -> {
+            NavController navController = NavHostFragment.findNavController(HomeFragment.this);
 
-        movies = movieModel.getItems().getValue();
-        System.out.println("got movies");
-        System.out.println(movies);
+            RecyclerView recyclerView = binding.recyclerViewFeaturedMovies;
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+            recyclerView.setAdapter(new FeaturedMovieAdapter(movies,navController ));
+        });
 
-        RecyclerView recyclerView = binding.recyclerViewFeaturedMovies;
-        recyclerView.setAdapter(new FeaturedMovieAdapter(movies,NavHostFragment.findNavController(HomeFragment.this)));
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
 
 
 

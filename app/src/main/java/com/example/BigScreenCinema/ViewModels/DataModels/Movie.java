@@ -1,4 +1,4 @@
-package com.example.BigScreenCinema.ViewModels;
+package com.example.BigScreenCinema.ViewModels.DataModels;
 
 public class Movie extends Base {
     private String title;
@@ -27,13 +27,6 @@ public class Movie extends Base {
 
     public Screening[] getScreenings() {
         return screenings;
-    }
-
-
-
-    @Override
-    public String getId() {
-        return super.getId();
     }
 
     public void setDescriptionLong(String descriptionLong) {

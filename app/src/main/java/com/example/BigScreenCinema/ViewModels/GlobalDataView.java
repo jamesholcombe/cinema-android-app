@@ -3,6 +3,7 @@ package com.example.BigScreenCinema.ViewModels;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.BigScreenCinema.ViewModels.DataModels.User;
 import com.google.firebase.auth.FirebaseUser;
 
 public class GlobalDataView extends ViewModel {

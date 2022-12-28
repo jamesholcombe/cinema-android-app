@@ -2,9 +2,9 @@ package com.example.BigScreenCinema.ViewModels;
 
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.BigScreenCinema.ViewModels.DataModels.Movie;
+import com.example.BigScreenCinema.ViewModels.DataModels.Screening;
 import com.google.firebase.firestore.CollectionReference;
-
-import java.util.Objects;
 
 public class SelectedMovieView extends BaseView<Screening> {
 
@@ -23,7 +23,8 @@ public class SelectedMovieView extends BaseView<Screening> {
         loadItems();
     }
 
-    private CollectionReference getReference() {
-        return db.collection(collectionName).document(Objects.requireNonNull(movie.getValue()).getTitle()).collection("screenings");
+    @Override
+    protected CollectionReference getReference() {
+        return db.collection(collectionName).document(movie.getValue().getId()).collection("screenings");
     }
 }

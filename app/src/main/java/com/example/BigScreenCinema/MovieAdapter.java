@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.BigScreenCinema.ViewModels.Movie;
+import com.example.BigScreenCinema.ViewModels.DataModels.Movie;
 import com.example.BigScreenCinema.ViewModels.SelectedMovieView;
 
 import java.util.ArrayList;

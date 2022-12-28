@@ -16,12 +16,12 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.example.BigScreenCinema.ViewModels.Booking;
+import com.example.BigScreenCinema.ViewModels.DataModels.Booking;
 import com.example.BigScreenCinema.ViewModels.GlobalDataView;
 import com.example.BigScreenCinema.ViewModels.LiveBookingView;
 import com.example.BigScreenCinema.ViewModels.MovieView;
 import com.example.BigScreenCinema.ViewModels.SelectedMovieView;
-import com.example.BigScreenCinema.ViewModels.User;
+import com.example.BigScreenCinema.ViewModels.DataModels.User;
 import com.example.BigScreenCinema.ViewModels.UserView;
 import com.example.BigScreenCinema.databinding.ActivityMainBinding;
 import com.firebase.ui.auth.AuthUI;

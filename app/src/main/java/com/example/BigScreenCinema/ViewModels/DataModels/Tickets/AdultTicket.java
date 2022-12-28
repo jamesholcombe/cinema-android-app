@@ -1,4 +1,4 @@
-package com.example.BigScreenCinema.ViewModels.Tickets;
+package com.example.BigScreenCinema.ViewModels.DataModels.Tickets;
 
 
 public class AdultTicket extends TicketType {
