@@ -33,4 +33,5 @@
     <string name="number_tickets_adult">Tickets (Adult 14+):</string>
     <string name="subtotal">Subtotal:</string>
     <string name="tickets_child">Tickets (Child):</string>
+    <string name="ticket_options">Ticket Options</string>
 </resources>

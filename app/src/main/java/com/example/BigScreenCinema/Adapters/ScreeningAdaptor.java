@@ -1,4 +1,4 @@
-package com.example.BigScreenCinema;
+package com.example.BigScreenCinema.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.BigScreenCinema.R;
 import com.example.BigScreenCinema.ViewModels.DataModels.Screening;
 
 import java.util.ArrayList;

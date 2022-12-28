@@ -1,4 +1,4 @@
-package com.example.BigScreenCinema;
+package com.example.BigScreenCinema.Utils;
 
 
 import android.graphics.Bitmap;

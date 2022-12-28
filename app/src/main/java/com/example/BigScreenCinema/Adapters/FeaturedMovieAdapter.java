@@ -1,4 +1,4 @@
-package com.example.BigScreenCinema;
+package com.example.BigScreenCinema.Adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.BigScreenCinema.R;
+import com.example.BigScreenCinema.Utils.DownloadImageFromUri;
 import com.example.BigScreenCinema.ViewModels.DataModels.Movie;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.example.BigScreenCinema;
+package com.example.BigScreenCinema.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

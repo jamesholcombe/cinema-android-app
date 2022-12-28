@@ -1,12 +1,12 @@
-package com.example.BigScreenCinema;
+package com.example.BigScreenCinema.Fragments;
 
 import android.os.Bundle;
-import android.view.KeyEvent;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,8 +15,12 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.BigScreenCinema.ViewModels.LiveBookingView;
+import com.example.BigScreenCinema.Adapters.ScreeningAdaptor;
+import com.example.BigScreenCinema.R;
 import com.example.BigScreenCinema.ViewModels.DataModels.Screening;
+import com.example.BigScreenCinema.ViewModels.DataModels.Tickets.AdultTicket;
+import com.example.BigScreenCinema.ViewModels.DataModels.Tickets.ChildTicket;
+import com.example.BigScreenCinema.ViewModels.LiveBookingView;
 import com.example.BigScreenCinema.ViewModels.SelectedMovieView;
 import com.example.BigScreenCinema.databinding.FragmentScreeningsBinding;
 
@@ -42,7 +46,8 @@ public class ScreeningsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         binding.textTitleScreenings.setText(selectedMovieView.getMovie().getValue().getTitle());
-
+        binding.textPriceAdult.setText(AdultTicket.getFormattedPrice(AdultTicket.getPrice()));
+        binding.textPriceChild.setText(ChildTicket.getFormattedPrice(ChildTicket.getPrice()));
 
         liveBookingView.getTotalFormatted().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
@@ -78,25 +83,46 @@ public class ScreeningsFragment extends Fragment {
             }
         });
 
+        binding.inputNumAdults.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
-        binding.inputNumAdults.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
-            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                Integer val = Integer.parseInt(textView.getText().toString());
-                liveBookingView.setNumAdultTickets(val);
-                System.out.println("adult ran");
-                return true;
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (s.toString().equals("")) {
+                    liveBookingView.setNumAdultTickets(0);
+                } else {
+                    Integer val = Integer.parseInt(s.toString());
+                    liveBookingView.setNumAdultTickets(val);
+                }
             }
         });
-        binding.inputNumChildren.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+
+        binding.inputNumChildren.addTextChangedListener(new TextWatcher() {
             @Override
-            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                Integer val = Integer.parseInt(textView.getText().toString());
-                System.out.println("child ran");
-                liveBookingView.setNumChildTickets(val);
-                return true;
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (s.toString().equals("")) {
+                    liveBookingView.setNumChildTickets(0);
+                } else {
+                    Integer val = Integer.parseInt(s.toString());
+                    liveBookingView.setNumChildTickets(val);
+                }
             }
         });
+
 
         binding.screeningConfirm.setOnClickListener(v -> {
                     NavHostFragment.findNavController(this).navigate(R.id.action_screeningsFragment_to_checkoutFragment);

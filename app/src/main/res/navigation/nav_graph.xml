@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.example.BigScreenCinema.HomeFragment"
+        android:name="com.example.BigScreenCinema.Fragments.HomeFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_home">
 
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.example.BigScreenCinema.MoviesFragment"
+        android:name="com.example.BigScreenCinema.Fragments.MoviesFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_movies">
 
@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/detaliedFragment"
-        android:name="com.example.BigScreenCinema.DetaliedFragment"
+        android:name="com.example.BigScreenCinema.Fragments.DetaliedFragment"
         android:label="DetaliedFragment" >
         <action
             android:id="@+id/action_detaliedFragment_to_screeningsFragment"
@@ -41,7 +41,7 @@
     </fragment>
     <fragment
         android:id="@+id/screeningsFragment"
-        android:name="com.example.BigScreenCinema.ScreeningsFragment"
+        android:name="com.example.BigScreenCinema.Fragments.ScreeningsFragment"
         android:label="ScreeningsFragment" >
         <action
             android:id="@+id/action_screeningsFragment_to_checkoutFragment"
@@ -49,6 +49,6 @@
     </fragment>
     <fragment
         android:id="@+id/checkoutFragment"
-        android:name="com.example.BigScreenCinema.CheckoutFragment"
+        android:name="com.example.BigScreenCinema.Fragments.CheckoutFragment"
         android:label="CheckoutFragment" />
 </navigation>

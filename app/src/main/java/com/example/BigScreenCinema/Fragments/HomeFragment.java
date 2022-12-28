@@ -1,4 +1,4 @@
-package com.example.BigScreenCinema;
+package com.example.BigScreenCinema.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +12,8 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.BigScreenCinema.Adapters.FeaturedMovieAdapter;
+import com.example.BigScreenCinema.R;
 import com.example.BigScreenCinema.ViewModels.DataModels.Movie;
 import com.example.BigScreenCinema.ViewModels.MovieView;
 import com.example.BigScreenCinema.databinding.FragmentHomeBinding;
