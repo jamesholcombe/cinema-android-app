@@ -34,4 +34,23 @@
     <string name="subtotal">Subtotal:</string>
     <string name="tickets_child">Tickets (Child):</string>
     <string name="ticket_options">Ticket Options</string>
+    <string name="checkout">Checkout</string>
+    <string name="total_amount_to_pay">Total to pay:</string>
+    <string name="card_number">Card Number</string>
+    <string name="cvs">CVS</string>
+    <string name="year">Year</string>
+    <string name="month">Month</string>
+    <string name="expiration_date">Expiration Date</string>
+    <string name="save_card_for_future_purchases">Save card for future purchases</string>
+    <string name="saved_card">Saved card</string>
+    <string name="new_card">New card</string>
+    <string name="payment_method">Payment Method</string>
+    <string name="card_details">Card Details</string>
+    <string name="cards">Cards</string>
+    <string name="select_card">Select Card</string>
+    <string name="purchase">Purchase</string>
+    <string name="name_on_card">Name on Card</string>
+    <string name="postal_code">Postal Code</string>
+    <string name="cardholder_information">Cardholder Information</string>
+    <string name="big_screen_cinema">Big Screen Cinema</string>
 </resources>

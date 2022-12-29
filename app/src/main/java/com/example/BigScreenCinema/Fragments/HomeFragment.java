@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.BigScreenCinema.Adapters.FeaturedMovieAdapter;
 import com.example.BigScreenCinema.R;
 import com.example.BigScreenCinema.ViewModels.DataModels.Movie;
+import com.example.BigScreenCinema.ViewModels.GlobalDataView;
 import com.example.BigScreenCinema.ViewModels.MovieView;
 import com.example.BigScreenCinema.databinding.FragmentHomeBinding;
 
@@ -25,6 +26,7 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
     private static ArrayList<Movie> movies;
     private MovieView movieModel;
+    private GlobalDataView globalDataModel;
 
     @Override
     public View onCreateView(
@@ -34,6 +36,7 @@ public class HomeFragment extends Fragment {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         movieModel = new ViewModelProvider(this).get(MovieView.class);
+        globalDataModel = new ViewModelProvider(requireActivity()).get(GlobalDataView.class);
         return binding.getRoot();
 
     }
@@ -41,6 +44,8 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
+        globalDataModel.setFragmentName("BigScreen Cinema");
 
         movieModel.getItems().observe(getViewLifecycleOwner(), movies -> {
             NavController navController = NavHostFragment.findNavController(HomeFragment.this);

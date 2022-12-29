@@ -16,19 +16,19 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.BigScreenCinema.ViewModels.CardsView;
 import com.example.BigScreenCinema.ViewModels.DataModels.Booking;
+import com.example.BigScreenCinema.ViewModels.DataModels.User;
 import com.example.BigScreenCinema.ViewModels.GlobalDataView;
 import com.example.BigScreenCinema.ViewModels.LiveBookingView;
 import com.example.BigScreenCinema.ViewModels.MovieView;
 import com.example.BigScreenCinema.ViewModels.SelectedMovieView;
-import com.example.BigScreenCinema.ViewModels.DataModels.User;
 import com.example.BigScreenCinema.ViewModels.UserView;
 import com.example.BigScreenCinema.databinding.ActivityMainBinding;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract;
 import com.firebase.ui.auth.IdpResponse;
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.gson.Gson;
@@ -45,25 +45,16 @@ public class MainActivity extends AppCompatActivity {
     private TextView userDisplayNameTextView;
     private MovieView movieModel;
     private SelectedMovieView selectedMovieView;
+    private CardsView cardsView;
     private UserView userView;
     private GlobalDataView globalDataView;
-    private LiveBookingView liveBookingView;
     private final ActivityResultLauncher<Intent> signInLauncher = registerForActivityResult(new FirebaseAuthUIActivityResultContract(), new ActivityResultCallback<FirebaseAuthUIAuthenticationResult>() {
         @Override
         public void onActivityResult(FirebaseAuthUIAuthenticationResult result) {
             onSignInResult(result);
         }
     });
-
-    private void setUserText() {
-
-        if (globalDataView.getFirebaseUser().getValue() != null) {
-
-            userDisplayNameTextView = findViewById(R.id.textViewUser);
-            String message = getString(R.string.welcome) + " " + globalDataView.getFirebaseUser().getValue().getDisplayName();
-            userDisplayNameTextView.setText(message);
-        }
-    }
+    private LiveBookingView liveBookingView;
 
     private void createViewModels() {
         movieModel = new ViewModelProvider(this).get(MovieView.class);
@@ -71,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
         globalDataView = new ViewModelProvider(this).get(GlobalDataView.class);
         userView = new ViewModelProvider(this).get(UserView.class);
         liveBookingView = new ViewModelProvider(this).get(LiveBookingView.class);
+        cardsView = new ViewModelProvider(this).get(CardsView.class);
+
 
     }
 
@@ -81,43 +74,33 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        setUserText();
+
+
+        globalDataView.getFirebaseUser().observe(this, firebaseUser -> {
+            if (firebaseUser != null) {
+                String displayMessage = "Welcome " + firebaseUser.getDisplayName();
+                binding.textViewUser.setText(displayMessage);
+            }
+        });
+
+        globalDataView.getFragmentName().observe(this, fragmentName -> {
+            if (fragmentName != null) {
+                binding.toolbar.setTitle(fragmentName);
+            }
+        });
+
 
         setSupportActionBar(binding.toolbar);
+
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
-        binding.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-            }
-        });
+
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -151,8 +134,6 @@ public class MainActivity extends AppCompatActivity {
             FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
             globalDataView.setFirebaseUser(firebaseUser);
             createOrRetrieveUser(firebaseUser.getUid());
-            setUserText();
-
 
             // ...
         } else {

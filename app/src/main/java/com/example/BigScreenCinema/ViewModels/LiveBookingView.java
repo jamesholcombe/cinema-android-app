@@ -15,10 +15,18 @@ public class LiveBookingView extends ViewModel {
     private final MutableLiveData<Integer> total = new MutableLiveData<Integer>(0);
     private final MutableLiveData<String> totalFormatted = new MutableLiveData<>("£0.00");
     private final MutableLiveData<Screening> screening = new MutableLiveData<Screening>();
-
+    private final MutableLiveData<Boolean> useSavedCard = new MutableLiveData<Boolean>(false);
 
     public MutableLiveData<Integer> getTotal(){
         return total;
+    }
+
+    public MutableLiveData<Boolean> getUseSavedCard(){
+        return useSavedCard;
+    }
+
+    public void setUseSavedCard(boolean useSavedCard){
+        this.useSavedCard.setValue(useSavedCard);
     }
 
     public MutableLiveData<Screening> getScreening(){

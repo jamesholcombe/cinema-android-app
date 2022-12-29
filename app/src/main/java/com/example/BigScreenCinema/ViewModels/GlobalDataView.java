@@ -9,7 +9,15 @@ import com.google.firebase.auth.FirebaseUser;
 public class GlobalDataView extends ViewModel {
     private MutableLiveData<User> user = new MutableLiveData<>();
     private MutableLiveData<FirebaseUser> firebaseUser = new MutableLiveData<>();
+    private MutableLiveData<String> fragmentName = new MutableLiveData<>("Big Screen Cinema");
 
+    public MutableLiveData<String> getFragmentName() {
+        return fragmentName;
+    }
+
+    public void setFragmentName(String fragmentName) {
+        this.fragmentName.setValue(fragmentName);
+    }
 
     public MutableLiveData<User> getUser() {
         return user;

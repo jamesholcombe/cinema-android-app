@@ -13,18 +13,21 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.example.BigScreenCinema.Utils.DownloadImageFromUri;
 import com.example.BigScreenCinema.R;
 import com.example.BigScreenCinema.ViewModels.DataModels.Movie;
+import com.example.BigScreenCinema.ViewModels.GlobalDataView;
 import com.example.BigScreenCinema.ViewModels.MovieView;
 import com.example.BigScreenCinema.ViewModels.SelectedMovieView;
 import com.example.BigScreenCinema.databinding.FragmentMovieDetailedBinding;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class DetaliedFragment extends Fragment {
 
     private FragmentMovieDetailedBinding binding;
-    private MovieView movieModel;
+
     private ArrayList<Movie> movies;
     private SelectedMovieView selectedMovieModel;
+    private GlobalDataView globalDataView;
 
     @Override
     public View onCreateView(
@@ -33,8 +36,8 @@ public class DetaliedFragment extends Fragment {
     ) {
 
         binding = FragmentMovieDetailedBinding.inflate(inflater, container, false);
-        movieModel = new ViewModelProvider(this).get(MovieView.class);
         selectedMovieModel = new ViewModelProvider(requireActivity()).get(SelectedMovieView.class);
+        globalDataView = new ViewModelProvider(requireActivity()).get(GlobalDataView.class);
         return binding.getRoot();
 
     }
@@ -43,11 +46,10 @@ public class DetaliedFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Movie movie = selectedMovieModel.getMovie().getValue();
-        binding.textViewDetailed.setText(movie.getTitle());
+        globalDataView.setFragmentName(Objects.requireNonNull(movie).getTitle());
         binding.ratingBarDetailed.setRating(movie.getRating());
         binding.textDescription.setText(movie.getDescriptionLong());
-        System.out.println("Screenings");
-        System.out.println(movie.getScreenings());
+
 
         binding.buttonDetailedToScreenings.setOnClickListener(v -> {
 

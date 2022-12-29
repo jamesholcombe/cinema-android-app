@@ -20,6 +20,7 @@ import com.example.BigScreenCinema.R;
 import com.example.BigScreenCinema.ViewModels.DataModels.Screening;
 import com.example.BigScreenCinema.ViewModels.DataModels.Tickets.AdultTicket;
 import com.example.BigScreenCinema.ViewModels.DataModels.Tickets.ChildTicket;
+import com.example.BigScreenCinema.ViewModels.GlobalDataView;
 import com.example.BigScreenCinema.ViewModels.LiveBookingView;
 import com.example.BigScreenCinema.ViewModels.SelectedMovieView;
 import com.example.BigScreenCinema.databinding.FragmentScreeningsBinding;
@@ -31,6 +32,7 @@ public class ScreeningsFragment extends Fragment {
     private FragmentScreeningsBinding binding;
     private SelectedMovieView selectedMovieView;
     private LiveBookingView liveBookingView;
+    private GlobalDataView globalDataView;
 
 
     @Override
@@ -39,12 +41,14 @@ public class ScreeningsFragment extends Fragment {
         binding = FragmentScreeningsBinding.inflate(inflater, container, false);
         selectedMovieView = new ViewModelProvider(requireActivity()).get(SelectedMovieView.class);
         liveBookingView = new ViewModelProvider(requireActivity()).get(LiveBookingView.class);
+        globalDataView = new ViewModelProvider(requireActivity()).get(GlobalDataView.class);
         return binding.getRoot();
 
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        globalDataView.setFragmentName("Screenings");
         binding.textTitleScreenings.setText(selectedMovieView.getMovie().getValue().getTitle());
         binding.textPriceAdult.setText(AdultTicket.getFormattedPrice(AdultTicket.getPrice()));
         binding.textPriceChild.setText(ChildTicket.getFormattedPrice(ChildTicket.getPrice()));

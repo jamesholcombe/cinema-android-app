@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.BigScreenCinema.Adapters.MovieAdapter;
+import com.example.BigScreenCinema.ViewModels.GlobalDataView;
 import com.example.BigScreenCinema.ViewModels.MovieView;
 import com.example.BigScreenCinema.ViewModels.SelectedMovieView;
 import com.example.BigScreenCinema.databinding.FragmentMoviesBinding;
@@ -22,7 +23,7 @@ public class MoviesFragment extends Fragment {
 
     private FragmentMoviesBinding binding;
     private MovieView movieModel;
-
+    private GlobalDataView globalDataModel;
     private SelectedMovieView selectedMovieView;
 
     @Override
@@ -31,12 +32,15 @@ public class MoviesFragment extends Fragment {
         binding = FragmentMoviesBinding.inflate(inflater, container, false);
         movieModel = new ViewModelProvider(this).get(MovieView.class);
         selectedMovieView = new ViewModelProvider(requireActivity()).get(SelectedMovieView.class);
+        globalDataModel = new ViewModelProvider(requireActivity()).get(GlobalDataView.class);
         return binding.getRoot();
 
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        globalDataModel.setFragmentName("Movies");
 
         RecyclerView recyclerView = binding.recyclerViewMovies;
         NavController navController = NavHostFragment.findNavController(MoviesFragment.this);
