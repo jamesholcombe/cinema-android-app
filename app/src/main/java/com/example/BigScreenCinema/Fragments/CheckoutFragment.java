@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
@@ -15,6 +16,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.BigScreenCinema.Adapters.CardAdapter;
 import com.example.BigScreenCinema.Fragments.Utils.InputWatcher;
 import com.example.BigScreenCinema.R;
 import com.example.BigScreenCinema.ViewModels.CardsView;
@@ -26,6 +28,8 @@ import com.example.BigScreenCinema.ViewModels.GlobalDataView;
 import com.example.BigScreenCinema.ViewModels.LiveBookingView;
 import com.example.BigScreenCinema.ViewModels.SelectedMovieView;
 import com.example.BigScreenCinema.databinding.FragmentCheckoutBinding;
+
+import java.util.ArrayList;
 
 public class CheckoutFragment extends Fragment {
     private FragmentCheckoutBinding binding;
@@ -51,6 +55,37 @@ public class CheckoutFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+
+        cardsView.getUser().observe(getViewLifecycleOwner(), user -> {
+                    if (user != null) {
+                        cardsView.getItems().observe(getViewLifecycleOwner(), new Observer<ArrayList<Card>>() {
+                            @Override
+                            public void onChanged(ArrayList<Card> cards) {
+                                binding.spinnerSavedCards.setAdapter(new CardAdapter(getContext(), cards));
+                            }
+                        });
+
+
+                    }
+                }
+
+        );
+
+
+        binding.spinnerSavedCards.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Card card = (Card) parent.getItemAtPosition(position);
+                checkoutView.setSelectedCard(card);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
 
         globalDataView.setFragmentName("Checkout");
         validateUseNewCard();
@@ -251,8 +286,10 @@ public class CheckoutFragment extends Fragment {
                     cardsView.createItem(card);
 
                 }
-                NavHostFragment.findNavController(CheckoutFragment.this)
-                        .navigate(R.id.action_checkoutFragment_to_completeFragment);
+                NavHostFragment.findNavController(CheckoutFragment.this).navigate(R.id.action_checkoutFragment_to_completeFragment);
+
+                //TODO: create booking
+                //generate QR codes
 
             }
         });

@@ -39,11 +39,11 @@
                     />
 
                 <ImageButton
+                    android:id="@+id/imageButtonUser"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:onClick="openLoginActivity"
                     android:scaleType="centerCrop"
                     android:src="@drawable/user"
 

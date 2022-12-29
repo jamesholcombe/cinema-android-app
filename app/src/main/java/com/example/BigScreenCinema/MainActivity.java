@@ -86,6 +86,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        binding.imageButtonUser.setOnClickListener(v -> {
+            openLoginActivity();
+
+        });
+
 
         setSupportActionBar(binding.toolbar);
 
@@ -96,7 +101,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
 
 
     @Override

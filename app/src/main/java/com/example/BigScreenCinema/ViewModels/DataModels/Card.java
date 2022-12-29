@@ -21,6 +21,15 @@ public class Card extends Base {
 
     }
 
+    public String getRedactedCardNumber() {
+        String cardNumberString = String.valueOf(cardNumber);
+        return "**** **** **** " + cardNumberString.substring(cardNumberString.length() - 4);
+    }
+
+    public String getExpiryDate() {
+        return String.format("%02d/%02d", expiryMonth, expiryYear);
+    }
+
     public long getCardNumber() {
         return cardNumber;
     }

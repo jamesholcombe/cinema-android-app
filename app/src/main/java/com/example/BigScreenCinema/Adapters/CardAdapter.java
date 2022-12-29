@@ -11,13 +11,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.BigScreenCinema.R;
-import com.example.BigScreenCinema.ViewModels.DataModels.Screening;
+import com.example.BigScreenCinema.ViewModels.DataModels.Card;
 
 import java.util.ArrayList;
 
-public class ScreeningAdaptor extends ArrayAdapter<Screening> {
+public class CardAdapter extends ArrayAdapter<Card> {
 
-    public ScreeningAdaptor(Context context, ArrayList<Screening> screenings) {
+    public CardAdapter(Context context, ArrayList<Card> screenings) {
         super(context, 0, screenings);
     }
 
@@ -35,12 +35,16 @@ public class ScreeningAdaptor extends ArrayAdapter<Screening> {
     private View initView(int position, View convertView, ViewGroup parent) {
         // It is used to set our custom view.
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.screening_spinner_item, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.card_spinner_item, parent, false);
         }
-        Screening currentItem = getItem(position);
-        TextView textViewName = convertView.findViewById(R.id.screening_text_date);
+        Card currentItem = getItem(position);
+        TextView textViewCardNumber = convertView.findViewById(R.id.card_number_spinner_text);
+        TextView textViewCardExpiry = convertView.findViewById(R.id.card_expiry_spinner_text);
+
         if (currentItem != null) {
-            textViewName.setText(currentItem.getDateString());
+            textViewCardNumber.setText(currentItem.getRedactedCardNumber());
+            textViewCardExpiry.setText(currentItem.getExpiryDate());
+
         }
 
         return convertView;

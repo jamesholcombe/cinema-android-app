@@ -16,7 +16,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.BigScreenCinema.Adapters.ScreeningAdaptor;
+import com.example.BigScreenCinema.Adapters.ScreeningAdapter;
 import com.example.BigScreenCinema.MainActivity;
 import com.example.BigScreenCinema.R;
 import com.example.BigScreenCinema.ViewModels.DataModels.Screening;
@@ -70,8 +70,8 @@ public class ScreeningsFragment extends Fragment {
                 if (screenings.size() == 0) {
                     return;
                 }
-                ScreeningAdaptor screeningAdaptor = new ScreeningAdaptor(getContext(), screenings);
-                binding.selectScreening.setAdapter(screeningAdaptor);
+                ScreeningAdapter screeningAdapter = new ScreeningAdapter(getContext(), screenings);
+                binding.selectScreening.setAdapter(screeningAdapter);
 
             }
         });
