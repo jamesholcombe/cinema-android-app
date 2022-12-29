@@ -50,5 +50,17 @@
     <fragment
         android:id="@+id/checkoutFragment"
         android:name="com.example.BigScreenCinema.Fragments.CheckoutFragment"
-        android:label="CheckoutFragment" />
+        android:label="CheckoutFragment" >
+        <action
+            android:id="@+id/action_checkoutFragment_to_completeFragment"
+            app:destination="@id/completeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/completeFragment"
+        android:name="com.example.BigScreenCinema.Fragments.CompleteFragment"
+        android:label="CompleteFragment" >
+        <action
+            android:id="@+id/action_completeFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
 </navigation>

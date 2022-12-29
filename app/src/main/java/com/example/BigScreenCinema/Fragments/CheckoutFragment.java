@@ -13,9 +13,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.BigScreenCinema.Fragments.Utils.InputWatcher;
 import com.example.BigScreenCinema.R;
+import com.example.BigScreenCinema.ViewModels.CardsView;
 import com.example.BigScreenCinema.ViewModels.CheckoutView;
 import com.example.BigScreenCinema.ViewModels.DataModels.Card;
 import com.example.BigScreenCinema.ViewModels.DataModels.Movie;
@@ -25,14 +27,13 @@ import com.example.BigScreenCinema.ViewModels.LiveBookingView;
 import com.example.BigScreenCinema.ViewModels.SelectedMovieView;
 import com.example.BigScreenCinema.databinding.FragmentCheckoutBinding;
 
-import java.util.Objects;
-
 public class CheckoutFragment extends Fragment {
     private FragmentCheckoutBinding binding;
     private LiveBookingView liveBookingView;
     private SelectedMovieView selectedMovieView;
     private CheckoutView checkoutView;
     private GlobalDataView globalDataView;
+    private CardsView cardsView;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -40,7 +41,9 @@ public class CheckoutFragment extends Fragment {
         liveBookingView = new ViewModelProvider(requireActivity()).get(LiveBookingView.class);
         selectedMovieView = new ViewModelProvider(requireActivity()).get(SelectedMovieView.class);
         globalDataView = new ViewModelProvider(requireActivity()).get(GlobalDataView.class);
+        cardsView = new ViewModelProvider(requireActivity()).get(CardsView.class);
         checkoutView = new ViewModelProvider(this).get(CheckoutView.class);
+
 
         return binding.getRoot();
 
@@ -236,6 +239,22 @@ public class CheckoutFragment extends Fragment {
 
             }
 
+        });
+
+
+        //validation has already been done.
+        binding.buttonCheckout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (binding.radioGroupPaymentMethod.getCheckedRadioButtonId() == R.id.radio_button_new_card && binding.checkoutSaveCard.isChecked()) {
+                    Card card = checkoutView.getNewCard().getValue();
+                    cardsView.createItem(card);
+
+                }
+                NavHostFragment.findNavController(CheckoutFragment.this)
+                        .navigate(R.id.action_checkoutFragment_to_completeFragment);
+
+            }
         });
     }
 

@@ -53,4 +53,6 @@
     <string name="postal_code">Postal Code</string>
     <string name="cardholder_information">Cardholder Information</string>
     <string name="big_screen_cinema">Big Screen Cinema</string>
+    <string name="purchase_complete">Purchase Complete</string>
+    <string name="home">Home</string>
 </resources>

@@ -2,9 +2,6 @@ package com.example.BigScreenCinema;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 
 import androidx.activity.result.ActivityResultCallback;
@@ -116,12 +113,14 @@ public class MainActivity extends AppCompatActivity {
                 Booking[] books = {};
                 User user = new User(id, books);
                 globalDataView.setUser(user);
+                cardsView.setUser(user);
 
             } else {
 
                 String json = gson.toJson(data);
                 User user = gson.fromJson(json, User.class);
                 globalDataView.setUser(user);
+                cardsView.setUser(user);
             }
         });
 
@@ -159,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void openLoginActivity(View view) {
+    public void openLoginActivity() {
         createSignInIntent();
 
     }

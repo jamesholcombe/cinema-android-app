@@ -1,5 +1,6 @@
 package com.example.BigScreenCinema.Fragments;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -16,6 +17,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.BigScreenCinema.Adapters.ScreeningAdaptor;
+import com.example.BigScreenCinema.MainActivity;
 import com.example.BigScreenCinema.R;
 import com.example.BigScreenCinema.ViewModels.DataModels.Screening;
 import com.example.BigScreenCinema.ViewModels.DataModels.Tickets.AdultTicket;
@@ -129,6 +131,13 @@ public class ScreeningsFragment extends Fragment {
 
 
         binding.screeningConfirm.setOnClickListener(v -> {
+            if (globalDataView.getUser().getValue() == null) {
+                Activity mainActivity = getActivity();
+                if (mainActivity instanceof MainActivity) {
+                    ((MainActivity) mainActivity).openLoginActivity();
+                }
+            }
+
                     NavHostFragment.findNavController(this).navigate(R.id.action_screeningsFragment_to_checkoutFragment);
                 }
 

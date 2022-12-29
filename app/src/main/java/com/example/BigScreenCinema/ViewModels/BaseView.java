@@ -47,7 +47,7 @@ class BaseView<T extends Base> extends ViewModel {
         return db.collection(collectionName);
     }
 
-    protected void createItem(T item) {
+    public void createItem(T item) {
         getReference().add(item);
     }
 
