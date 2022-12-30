@@ -50,9 +50,12 @@
     <string name="select_card">Select Card</string>
     <string name="purchase">Purchase</string>
     <string name="name_on_card">Name on Card</string>
-    <string name="postal_code">Postal Code</string>
+    <string name="postal_code">Postcode</string>
     <string name="cardholder_information">Cardholder Information</string>
     <string name="big_screen_cinema">Big Screen Cinema</string>
     <string name="purchase_complete">Purchase Complete</string>
     <string name="home">Home</string>
+    <string name="child_x">Child x</string>
+    <string name="adult_x">Adult x</string>
+    <string name="my_bookings">My Bookings</string>
 </resources>

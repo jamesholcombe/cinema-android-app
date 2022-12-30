@@ -8,22 +8,10 @@
     android:padding="12dp">
 
 
-    <TextView
-        android:id="@+id/text_view_detailed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="LABEL"
-        android:textAlignment="center"
-        android:textSize="30sp">
-
-    </TextView>
-
     <ImageView
         android:id="@+id/image_view_movie_detailed"
         android:layout_width="200sp"
-        android:layout_height="400sp"
+        android:layout_height="300sp"
         android:layout_gravity="center"
         android:src="@mipmap/ic_launcher"
 

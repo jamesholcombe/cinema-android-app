@@ -131,12 +131,12 @@ public class ScreeningsFragment extends Fragment {
 
 
         binding.screeningConfirm.setOnClickListener(v -> {
-            if (globalDataView.getUser().getValue() == null) {
-                Activity mainActivity = getActivity();
-                if (mainActivity instanceof MainActivity) {
-                    ((MainActivity) mainActivity).openLoginActivity();
-                }
-            }
+                    if (globalDataView.getUser().getValue() == null) {
+                        Activity mainActivity = getActivity();
+                        if (mainActivity instanceof MainActivity) {
+                            ((MainActivity) mainActivity).openLoginActivity();
+                        }
+                    }
 
                     NavHostFragment.findNavController(this).navigate(R.id.action_screeningsFragment_to_checkoutFragment);
                 }

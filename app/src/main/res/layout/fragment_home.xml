@@ -7,6 +7,17 @@
     android:orientation="vertical"
     tools:context=".Fragments.HomeFragment">
 
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:layout_margin="20dp"
+        android:text="@string/my_bookings"
+        android:textSize="20sp"
+        android:id="@+id/button_bookings"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -43,14 +54,7 @@
         android:layout_marginBottom="96dp"
         android:text="@string/see_more_movies" />
 
-    <Button
-        android:id="@+id/button_maps"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/maps_and_directions"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="540dp" />
+
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

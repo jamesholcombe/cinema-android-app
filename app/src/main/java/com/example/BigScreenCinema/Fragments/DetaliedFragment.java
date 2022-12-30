@@ -10,11 +10,10 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.BigScreenCinema.Utils.DownloadImageFromUri;
 import com.example.BigScreenCinema.R;
+import com.example.BigScreenCinema.Utils.DownloadImageFromUri;
 import com.example.BigScreenCinema.ViewModels.DataModels.Movie;
 import com.example.BigScreenCinema.ViewModels.GlobalDataView;
-import com.example.BigScreenCinema.ViewModels.MovieView;
 import com.example.BigScreenCinema.ViewModels.SelectedMovieView;
 import com.example.BigScreenCinema.databinding.FragmentMovieDetailedBinding;
 
@@ -30,10 +29,7 @@ public class DetaliedFragment extends Fragment {
     private GlobalDataView globalDataView;
 
     @Override
-    public View onCreateView(
-            @NonNull LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState
-    ) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentMovieDetailedBinding.inflate(inflater, container, false);
         selectedMovieModel = new ViewModelProvider(requireActivity()).get(SelectedMovieView.class);

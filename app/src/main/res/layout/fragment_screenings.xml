@@ -19,9 +19,12 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="130dp"
+        android:layout_height="200dp"
         android:layout_margin="10dp"
-        app:cardCornerRadius="10dp">
+        app:cardCornerRadius="10dp"
+        android:layout_gravity="center"
+        android:elevation="2dp"
+        >
 
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -97,8 +100,8 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:cardCornerRadius="10dp">
+        android:layout_margin="10dp">
+
 
 
         <LinearLayout
@@ -129,6 +132,8 @@
                     android:id="@+id/select_screening"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:spinnerMode="dropdown"
 
                     />
             </androidx.appcompat.widget.LinearLayoutCompat>
@@ -178,13 +183,20 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/total" />
+                    android:text="@string/total"
+
+                    android:textSize="20sp"/>
+
 
                 <TextView
                     android:id="@+id/text_total"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/_0_00" />
+                    android:text="@string/_0_00"
+                    android:paddingLeft="20dp"
+                    android:textSize="20sp"
+
+                    />
 
 
             </androidx.appcompat.widget.LinearLayoutCompat>

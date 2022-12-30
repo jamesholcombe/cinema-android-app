@@ -13,6 +13,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.BigScreenCinema.ViewModels.BookingView;
 import com.example.BigScreenCinema.ViewModels.CardsView;
 import com.example.BigScreenCinema.ViewModels.DataModels.Booking;
 import com.example.BigScreenCinema.ViewModels.DataModels.User;
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     private CardsView cardsView;
     private UserView userView;
     private GlobalDataView globalDataView;
+    private BookingView bookingView;
     private final ActivityResultLauncher<Intent> signInLauncher = registerForActivityResult(new FirebaseAuthUIActivityResultContract(), new ActivityResultCallback<FirebaseAuthUIAuthenticationResult>() {
         @Override
         public void onActivityResult(FirebaseAuthUIAuthenticationResult result) {
@@ -60,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         userView = new ViewModelProvider(this).get(UserView.class);
         liveBookingView = new ViewModelProvider(this).get(LiveBookingView.class);
         cardsView = new ViewModelProvider(this).get(CardsView.class);
+        bookingView = new ViewModelProvider(this).get(BookingView.class);
 
 
     }
@@ -113,11 +116,14 @@ public class MainActivity extends AppCompatActivity {
         userView.getDb().collection("users").document(id).get().addOnCompleteListener(task -> {
             Gson gson = new Gson();
             Map<String, Object> data = task.getResult().getData();
+
+            // if the user has no bookings or cards, they will not be in the database
             if (Objects.isNull(data)) {
                 Booking[] books = {};
                 User user = new User(id, books);
                 globalDataView.setUser(user);
                 cardsView.setUser(user);
+                bookingView.setUser(user);
 
             } else {
 
@@ -125,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
                 User user = gson.fromJson(json, User.class);
                 globalDataView.setUser(user);
                 cardsView.setUser(user);
+                bookingView.setUser(user);
             }
         });
 

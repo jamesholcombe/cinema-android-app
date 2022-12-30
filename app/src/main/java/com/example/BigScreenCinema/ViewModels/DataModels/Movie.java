@@ -9,7 +9,7 @@ public class Movie extends Base {
     private Screening[] screenings;
     private boolean isFeatured;
 
-    public Movie(){
+    public Movie() {
         super();
     }
 
@@ -29,51 +29,49 @@ public class Movie extends Base {
         return screenings;
     }
 
-    public void setDescriptionLong(String descriptionLong) {
-        this.descriptionLong = descriptionLong;
-    }
-
-    public void setDescriptionShort(String descriptionShort) {
-        this.descriptionShort = descriptionShort;
-    }
-
-    public void setImageUri(String imageUri) {
-        this.imageUri = imageUri;
-    }
-
-    public void setRating(Float rating) {
-        this.rating = rating;
-    }
-
     public void setScreenings(Screening[] screenings) {
         this.screenings = screenings;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getTitle() {
         return title;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public Float getRating() {
         return rating;
+    }
+
+    public void setRating(Float rating) {
+        this.rating = rating;
     }
 
     public String getDescriptionShort() {
         return descriptionShort;
     }
 
+    public void setDescriptionShort(String descriptionShort) {
+        this.descriptionShort = descriptionShort;
+    }
+
     public String getImageUri() {
         return imageUri;
     }
 
+    public void setImageUri(String imageUri) {
+        this.imageUri = imageUri;
+    }
 
     public String getDescriptionLong() {
         return descriptionLong;
     }
 
+    public void setDescriptionLong(String descriptionLong) {
+        this.descriptionLong = descriptionLong;
+    }
 
     public boolean isFeatured() {
         return isFeatured;

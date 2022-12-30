@@ -1,6 +1,5 @@
 package com.example.BigScreenCinema.ViewModels;
 
-import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 

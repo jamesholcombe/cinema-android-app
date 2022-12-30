@@ -17,7 +17,11 @@ import java.util.ArrayList;
 
 class BaseView<T extends Base> extends ViewModel {
 
+    protected final FirebaseFirestore db;
+    protected final String collectionName;
     private final Class<? extends T> klass;
+    private final MutableLiveData<ArrayList<T>> items = new MutableLiveData<>(new ArrayList<T>());
+    private boolean isLoaded = false;
 
     BaseView(String collectionName, Class<? extends T> klass) {
         db = FirebaseFirestore.getInstance();
@@ -25,12 +29,6 @@ class BaseView<T extends Base> extends ViewModel {
         this.collectionName = collectionName;
 
     }
-
-    protected final FirebaseFirestore db;
-    protected final String collectionName;
-    private final MutableLiveData<ArrayList<T>> items = new MutableLiveData<>(new ArrayList<T>());
-    private boolean isLoaded = false;
-
 
     public MutableLiveData<ArrayList<T>> getItems() {
         if (!isLoaded) {
@@ -47,27 +45,31 @@ class BaseView<T extends Base> extends ViewModel {
         return db.collection(collectionName);
     }
 
-    public void createItem(T item) {
+    public void createItem(T item, boolean refresh) {
         getReference().add(item);
+        if (refresh) {
+            loadItems();
+        }
+
     }
 
-    protected void loadItems() {
-        getReference()
-                .get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        ArrayList<T> newItems = new ArrayList<T>();
-                        for (QueryDocumentSnapshot document : task.getResult()) {
-                            T object = document.toObject(klass);
-                            object.setId(document.getId());
-                            newItems.add(object);
 
-                        }
-                        items.setValue(newItems);
-                        isLoaded = true;
-                    } else {
-                        Log.d(TAG, "Error getting documents: ", task.getException());
-                    }});
+    protected void loadItems() {
+        getReference().get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                ArrayList<T> newItems = new ArrayList<T>();
+                for (QueryDocumentSnapshot document : task.getResult()) {
+                    T object = document.toObject(klass);
+                    object.setId(document.getId());
+                    newItems.add(object);
+
+                }
+                items.setValue(newItems);
+                isLoaded = true;
+            } else {
+                Log.d(TAG, "Error getting documents: ", task.getException());
+            }
+        });
     }
 
 }

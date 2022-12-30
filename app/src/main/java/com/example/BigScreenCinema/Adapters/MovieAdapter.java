@@ -25,38 +25,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     private SelectedMovieView selectedMovieView;
     private NavController navController;
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
-        public ImageView movieImageView;
-        public TextView movieTitleTextView;
-        public RatingBar movieRatingBar;
-        public Button movieMoreInfo;
-        public Button movieScreeningsButton;
-
-
-
-        // Constructor - accepts entire row item
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-
-            // Find each view by id you set up in the list_item.xml
-            movieImageView = itemView.findViewById(R.id.image_view_movie);
-            movieTitleTextView = itemView.findViewById(R.id.text_view_movie_title);
-            movieRatingBar = itemView.findViewById(R.id.ratingBar);
-            movieMoreInfo = itemView.findViewById(R.id.button_movie_more_info);
-            movieScreeningsButton = itemView.findViewById(R.id.button_movie_tickets);
-
-        }
-    }
-
-    // Constructor
-    public MovieAdapter(ArrayList<Movie> list, NavController navController, SelectedMovieView selectedMovieView){
+    public MovieAdapter(ArrayList<Movie> list, NavController navController, SelectedMovieView selectedMovieView) {
         this.list = list;
         this.navController = navController;
         this.selectedMovieView = selectedMovieView;
 
     }
 
-    // Creating a viewHolder
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -68,7 +43,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         return new ViewHolder(contactView);
     }
 
-    // Assigning respective data for the views based on the position of the current item
     @Override
     public void onBindViewHolder(@NonNull MovieAdapter.ViewHolder holder, int position) {
         // Get the Movie based on the current position
@@ -94,15 +68,35 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         holder.movieMoreInfo.setOnClickListener(view -> {
 
             selectedMovieView.setMovie(currentItem);
-                    navController.navigate(R.id.action_SecondFragment_to_detaliedFragment);
+            navController.navigate(R.id.action_SecondFragment_to_detaliedFragment);
         });
     }
-
-
 
     // Indicating how long your data is
     @Override
     public int getItemCount() {
         return list.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        public ImageView movieImageView;
+        public TextView movieTitleTextView;
+        public RatingBar movieRatingBar;
+        public Button movieMoreInfo;
+        public Button movieScreeningsButton;
+
+
+        // Constructor - accepts entire row item
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            // Find each view by id you set up in the list_item.xml
+            movieImageView = itemView.findViewById(R.id.image_view_movie);
+            movieTitleTextView = itemView.findViewById(R.id.text_view_movie_title);
+            movieRatingBar = itemView.findViewById(R.id.ratingBar);
+            movieMoreInfo = itemView.findViewById(R.id.button_movie_more_info);
+            movieScreeningsButton = itemView.findViewById(R.id.button_movie_tickets);
+
+        }
     }
 }

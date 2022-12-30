@@ -4,8 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_vertical"
-
-
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
@@ -19,7 +17,10 @@
 
         <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            >
 
 
             <TableRow
@@ -27,11 +28,12 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:text="@string/purchase_details"
-                    tools:layout_editor_absoluteX="171dp"
-                    tools:layout_editor_absoluteY="79dp" />
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
             </TableRow>
 
             <TableRow
@@ -126,7 +128,10 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            >
 
 
             <RadioGroup
@@ -140,20 +145,25 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/payment_method" />
+                    android:text="@string/payment_method"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
 
 
                 <RadioButton
                     android:id="@+id/radio_button_saved_card"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/saved_card" />
+                    android:text="@string/saved_card"
+                    android:textColor="@color/white"/>
 
                 <RadioButton
                     android:id="@+id/radio_button_new_card"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/new_card" />
+                    android:text="@string/new_card"
+                    android:textColor="@color/white"/>
 
 
             </RadioGroup>
@@ -162,7 +172,10 @@
             <LinearLayout
                 android:id="@+id/layout_choose_card"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:textColor="@color/white"
+                >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -187,7 +200,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/cardholder_information" />
+                        android:text="@string/cardholder_information"
+                        android:textSize="16sp"
+                        />
 
 
                 </TableRow>
@@ -199,13 +214,19 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/name_on_card"
-                        android:id="@+id/edit_text_cardholder_name" />
+                        android:textColorHint="@color/white"
+                        android:outlineProvider="background"
+                        android:id="@+id/edit_text_cardholder_name"
+                        android:textSize="13sp"
+                        />
 
                     <EditText
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/postal_code"
-                        android:id="@+id/edit_text_cardholder_postcode" />
+                        android:textColorHint="@color/white"
+                        android:id="@+id/edit_text_cardholder_postcode"
+                        android:textSize="13sp"/>
                 </TableRow>
 
                 <TableRow>
@@ -226,14 +247,18 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/card_number"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:textColorHint="@color/white"
+                        android:textSize="13sp"/>
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/checkout_card_cvs"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/cvs"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:textColorHint="@color/white"
+                        android:textSize="13sp"/>
 
 
                 </TableRow>
@@ -254,14 +279,18 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/month"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:textColorHint="@color/white"
+                        android:textSize="13sp"/>
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/checkout_card_expiry_year"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/year"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:textColorHint="@color/white"
+                        android:textSize="13sp"/>
 
 
                 </TableRow>
@@ -272,7 +301,8 @@
                         android:id="@+id/checkout_save_card"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/save_card_for_future_purchases" />
+                        android:text="@string/save_card_for_future_purchases"
+                        android:textColor="#F3ECEC"/>
                 </TableRow>
 
 
@@ -287,6 +317,7 @@
 
     <Button
         android:id="@+id/button_checkout"
+        android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/purchase" />

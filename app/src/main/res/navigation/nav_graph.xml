@@ -17,6 +17,12 @@
         <action
             android:id="@+id/action_FirstFragment_to_screeningsFragment"
             app:destination="@id/screeningsFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_bookingsFragment"
+            app:destination="@id/bookingsFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_detaliedFragment"
+            app:destination="@id/detaliedFragment" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -63,4 +69,16 @@
             android:id="@+id/action_completeFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/bookingsFragment"
+        android:name="com.example.BigScreenCinema.Fragments.BookingsFragment"
+        android:label="BookingsFragment" >
+        <action
+            android:id="@+id/action_bookingsFragment_to_ticketsFragment"
+            app:destination="@id/ticketsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ticketsFragment"
+        android:name="com.example.BigScreenCinema.Fragments.TicketFragment"
+        android:label="TicketsFragment" />
 </navigation>

@@ -5,13 +5,11 @@ import android.graphics.Bitmap;
 
 import com.example.BigScreenCinema.Utils.DownloadImage;
 
-import java.util.UUID;
-
 public class TicketType {
     private static int price;
+    private final boolean isUsed = false;
     private String QRCodeUri;
     private Bitmap QRCode;
-    private final boolean isUsed = false;
 
     TicketType() {
 
@@ -22,15 +20,6 @@ public class TicketType {
 
     }
 
-    public Bitmap getQRCode() {
-        return QRCode;
-    }
-
-    public void generateQRCode() {
-        String uuid = UUID.randomUUID().toString();
-        this.QRCodeUri = "https://api.qrserver.com/v1/create-qr-code/?data=" + uuid + "&size=100x100";
-
-    }
 
     public static String getFormattedPrice(int priceVal) {
         String priceStr = new String(String.valueOf(priceVal));
@@ -41,14 +30,14 @@ public class TicketType {
 
     }
 
+    public String getQRCodeUri() {
+        return QRCodeUri;
+    }
+
     public void setQRCodeUri(String QRCodeUri) {
         this.QRCodeUri = QRCodeUri;
         DownloadImageTask downloadImageTask = new DownloadImageTask();
         downloadImageTask.execute(QRCodeUri);
-    }
-
-    public String getQRCodeUri() {
-        return QRCodeUri;
     }
 
     private class DownloadImageTask extends DownloadImage {

@@ -19,17 +19,22 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.example.BigScreenCinema.Adapters.CardAdapter;
 import com.example.BigScreenCinema.Fragments.Utils.InputWatcher;
 import com.example.BigScreenCinema.R;
+import com.example.BigScreenCinema.ViewModels.BookingView;
 import com.example.BigScreenCinema.ViewModels.CardsView;
 import com.example.BigScreenCinema.ViewModels.CheckoutView;
+import com.example.BigScreenCinema.ViewModels.DataModels.Booking;
 import com.example.BigScreenCinema.ViewModels.DataModels.Card;
 import com.example.BigScreenCinema.ViewModels.DataModels.Movie;
 import com.example.BigScreenCinema.ViewModels.DataModels.Screening;
+import com.example.BigScreenCinema.ViewModels.DataModels.Tickets.AdultTicket;
+import com.example.BigScreenCinema.ViewModels.DataModels.Tickets.ChildTicket;
 import com.example.BigScreenCinema.ViewModels.GlobalDataView;
 import com.example.BigScreenCinema.ViewModels.LiveBookingView;
 import com.example.BigScreenCinema.ViewModels.SelectedMovieView;
 import com.example.BigScreenCinema.databinding.FragmentCheckoutBinding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class CheckoutFragment extends Fragment {
     private FragmentCheckoutBinding binding;
@@ -38,6 +43,7 @@ public class CheckoutFragment extends Fragment {
     private CheckoutView checkoutView;
     private GlobalDataView globalDataView;
     private CardsView cardsView;
+    private BookingView bookingView;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -46,6 +52,7 @@ public class CheckoutFragment extends Fragment {
         selectedMovieView = new ViewModelProvider(requireActivity()).get(SelectedMovieView.class);
         globalDataView = new ViewModelProvider(requireActivity()).get(GlobalDataView.class);
         cardsView = new ViewModelProvider(requireActivity()).get(CardsView.class);
+        bookingView = new ViewModelProvider(requireActivity()).get(BookingView.class);
         checkoutView = new ViewModelProvider(this).get(CheckoutView.class);
 
 
@@ -276,21 +283,44 @@ public class CheckoutFragment extends Fragment {
 
         });
 
-
         //validation has already been done.
         binding.buttonCheckout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (binding.radioGroupPaymentMethod.getCheckedRadioButtonId() == R.id.radio_button_new_card && binding.checkoutSaveCard.isChecked()) {
                     Card card = checkoutView.getNewCard().getValue();
-                    cardsView.createItem(card);
+                    cardsView.createItem(card, true);
 
                 }
                 NavHostFragment.findNavController(CheckoutFragment.this).navigate(R.id.action_checkoutFragment_to_completeFragment);
 
-                //TODO: create booking
-                //generate QR codes
+                Booking booking = new Booking();
+                Screening screening = liveBookingView.getScreening().getValue();
+                Movie movieWithoutScreenings = selectedMovieView.getMovie().getValue();
 
+                // we don't want to save the screenings in the booking
+                movieWithoutScreenings.setScreenings(null);
+                screening.setMovie(movieWithoutScreenings);
+                booking.setScreening(screening);
+
+                int numAdults = liveBookingView.getNumAdultTickets().getValue();
+                int numChildren = liveBookingView.getNumChildTickets().getValue();
+
+                AdultTicket[] adultTickets = new AdultTicket[numAdults];
+                ChildTicket[] childTickets = new ChildTicket[numChildren];
+
+                for (int i = 0; i < numAdults; i++) {
+                    adultTickets[i] = new AdultTicket();
+                }
+
+                for (int i = 0; i < numChildren; i++) {
+                    childTickets[i] = new ChildTicket();
+                }
+
+                booking.generateQRCode();
+                booking.setAdultTickets(Arrays.asList(adultTickets));
+                booking.setChildTickets(Arrays.asList(childTickets));
+                bookingView.createItem(booking, true);
             }
         });
     }
